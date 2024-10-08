@@ -129,7 +129,9 @@ class MarlinbftPlugin(octoprint.plugin.StartupPlugin,
 
         _, local_basename = os.path.split(local_path)
         root, ext = os.path.splitext(local_basename)
-        remote_basename = os.path.basename(root)[:8] + ext[:4]
+				temp_path = os.path.basename(root)
+			  str = temp_path.split("/")[-1]
+        remote_basename = str + ext[:4]
 
         disk_path = self._file_manager.path_on_disk("local", local_path)
         self._logger.info("Path on disk '%s'" % disk_path)
